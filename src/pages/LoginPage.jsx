@@ -1,13 +1,17 @@
 import React from 'react';
 import userService from '../services/userService';
 import LoginForm from '../components/LoginForm';
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+    const navigate = useNavigate();
+
     const handleSubmit = async (data) => {
         console.log(data);
         try {
             const response = await userService.login(data);
             console.log(response);
+            navigate("/home");
         }
         catch (error) {
             console.log(error);
